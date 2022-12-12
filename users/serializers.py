@@ -28,13 +28,13 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data: dict) -> User:
         return User.objects.create_superuser(**validated_data)
 
-    def update(self, instance: User, validated_data: dict) -> User:
-        for key, value in validated_data.items():
-            setattr(instance, key, value)
+    # def update(self, instance: User, validated_data: dict) -> User:
+    #     for key, value in validated_data.items():
+    #         setattr(instance, key, value)
 
-        instance.save()
+    #     instance.save()
 
-        return instance
+    #     return instance
 
 
 class UserSerializerOld(serializers.Serializer):
