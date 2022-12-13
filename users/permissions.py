@@ -1,7 +1,6 @@
 from rest_framework import permissions
 from .models import User
 from rest_framework.views import View
-from rest_framework import authentication
 
 
 class IsAccountOwner(permissions.BasePermission):
