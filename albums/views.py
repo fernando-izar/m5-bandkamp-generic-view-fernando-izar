@@ -19,27 +19,27 @@ class AlbumView(ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 
-class AlbumViewOld(APIView, PageNumberPagination):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+# class AlbumViewOld(APIView, PageNumberPagination):
+#     authentication_classes = [JWTAuthentication]
+#     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    def get(self, request):
-        """
-        Obtençao de albums
-        """
-        albums = Album.objects.all()
+#     def get(self, request):
+#         """
+#         Obtençao de albums
+#         """
+#         albums = Album.objects.all()
 
-        result_page = self.paginate_queryset(albums, request)
-        serializer = AlbumSerializer(result_page, many=True)
+#         result_page = self.paginate_queryset(albums, request)
+#         serializer = AlbumSerializer(result_page, many=True)
 
-        return self.get_paginated_response(serializer.data)
+#         return self.get_paginated_response(serializer.data)
 
-    def post(self, request):
-        """
-        Criaçao de album
-        """
-        serializer = AlbumSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=request.user)
+#     def post(self, request):
+#         """
+#         Criaçao de album
+#         """
+#         serializer = AlbumSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save(user=request.user)
 
-        return Response(serializer.data, status.HTTP_201_CREATED)
+#         return Response(serializer.data, status.HTTP_201_CREATED)
